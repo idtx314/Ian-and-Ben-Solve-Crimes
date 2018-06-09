@@ -5,11 +5,14 @@ import sys
 
 '''
 TODO
-remove duplicates
-Arguments for file input and output
+remove duplicate entries
+change script to continue until end of file
+
 
 USAGE
-./counting.py input output
+./counting.py input_file output_file
+
+
 '''
 
 def main(args):
@@ -35,7 +38,9 @@ def main(args):
 
 
     i=0
+    # Until the number of lines processed reaches max
     while(i < 112480):
+        # Keep a count of the number of lines processed
         i+=1
         print i
 
