@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import sys
-import datetime
+from mx import DateTime
 import enum
 
 
@@ -110,13 +110,18 @@ def main(args):
         y = int(date_list[0][6:10])
         m = int(date_list[0][0:2])
         d = int(date_list[0][3:5])
-        date = datetime.date(y,m,d)
-        day = DoW(date.weekday())
+        date = DateTime.Date(y,m,d)
+        day = DoW(date.day_of_week)
+
+        print day.name
 
 
         # TODO: Add the moon field and fill it appropriately by date
 
         # TODO: Split the date into two fields, day of week and time of day
+
+        # TODO: Convert time into a general time of day
+
 
         # Form a new comma separated string
         msg = ','.join(attlist)
