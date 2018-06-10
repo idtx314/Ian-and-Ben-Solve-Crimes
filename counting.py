@@ -32,7 +32,7 @@ add_moon = 0
 
 def main(args):
     if(len(args) < 3):
-        print "Usage: 'counting.py input_file.ext output_file' [moon:{0,1}]"
+        print "Usage: 'counting.py input_file.ext output_file [moon:{0,1}]'"
         sys.exit()
 
     if(int(args[3]))
@@ -98,6 +98,7 @@ def main(args):
             if(attlist[index] == ''):
                 attlist[index] = '?'
 
+        # TODO: If there are misclassification in Location, fix them
         # If there are spaces in location, remove them
         attlist[8] = attlist[8].replace(" ","_")
 
