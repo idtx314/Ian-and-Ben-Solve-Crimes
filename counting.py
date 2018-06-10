@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
 import sys
-from mx import DateTime
 import enum
+import moon
+from mx import DateTime
 
 
 '''
@@ -113,14 +114,42 @@ def main(args):
         date = DateTime.Date(y,m,d)
         day = DoW(date.day_of_week)
 
-        print day.name
-
-
         # TODO: Add the moon field and fill it appropriately by date
+        moon_dict = moon.phase(date) # Should return a dict containing moon data
+
+        # Switch time to 24 hour mode. Assuming that 12 am is midnight in the morning and 12pm is midday
+        hh    = int(date_list[1][0:2])
+        # mm  = int(date_list[1][3:5])
+        # ss  = int(date_list[1][6:8])
+
+        # If hh is 12, subtract 12
+        if(hh == 12):
+            hh -= 12
+        # If PM, add 12 to HH
+        if(date_list[2] == 'PM'):
+            hh += 12
+
+        # Convert time into a general time of day
+        if(hh > 6):
+            if(hh > 12):
+                if(hh > 18):
+                    if(hh > 21):
+                        time_of_day = 'Night'
+                    else:
+                        time_of_day = 'Evening'
+                else:
+                    time_of_day = 'Afternoon'
+            else:
+                time_of_day = 'Morning'
+        else:
+            time_of_day = 'Night'
 
         # TODO: Split the date into two fields, day of week and time of day
+        attlist[0] = day.name
+        attlist.insert(1,time_of_day)
+        # attlist.append(moon_phase)
 
-        # TODO: Convert time into a general time of day
+        # [Day,Time,IUCR,Location_Description,Latitude,Longitude,Moon]
 
 
         # Form a new comma separated string
