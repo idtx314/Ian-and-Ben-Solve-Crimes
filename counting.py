@@ -35,7 +35,7 @@ def main(args):
         print "Usage: 'counting.py input_file.ext output_file [moon:{0,1}]'"
         sys.exit()
 
-    if(int(args[3]))
+    if(int(args[3])):
         add_moon = 1
 
     # [filename,extenstion]
@@ -114,6 +114,9 @@ def main(args):
 
         # [Date,IUCR,Location_Description,Latitude,Longitude]
 
+        if(len(attlist[1]) == 3):
+            attlist[1] = '0'+attlist[1]
+
         # Get the day.name, the day of the week as a string
         date_list = attlist[0].split(' ')
         y = int(date_list[0][6:10])
@@ -122,8 +125,8 @@ def main(args):
         date = DateTime.Date(y,m,d)
         day = DoW(date.day_of_week)
 
-        if(y != 2017):
-            continue
+        # if(y != 2017):
+        #     continue
 
         # Determine lunar phase
         moon_dict = moon.phase(date)
@@ -163,7 +166,7 @@ def main(args):
         # [Day,Time,IUCR,Location_Description,Latitude,Longitude,Moon]
         attlist[0] = day.name
         attlist.insert(1,time_of_day)
-        if(add_moon=1):
+        if(add_moon == 1):
             attlist.append(moon_phase)
 
         # Form a new comma separated string
@@ -208,6 +211,6 @@ def main(args):
 
 
 if __name__ == '__main__':
-    if len(sys.argv==3):
+    if(len(sys.argv) == 3):
         sys.argv.append('0')
     main(sys.argv)
