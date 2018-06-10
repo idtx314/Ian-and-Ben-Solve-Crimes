@@ -8,6 +8,8 @@ from mx import DateTime
 
 '''
 TODO
+Add more IUCR codes and Locations
+set the header message to account for the actual file name in @relation
 remove duplicate entries
 change script to continue until end of file
 
@@ -52,7 +54,7 @@ def main(args):
     f1.readline()
     i=0     # DEBUG
     # Until the number of lines processed reaches max
-    while(i < 10):
+    while(1):
         # DEBUG Keep a count of the number of lines processed
         i+=1
         print i
